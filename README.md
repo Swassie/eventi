@@ -13,7 +13,7 @@ Eventi is a library for creating custom events with callbacks in C++.
 
 ## Example
 
-```
+```cpp
 #include <eventi/Event.h>
 #include <eventi/Scoped_callbacks.h>
 #include <eventi/Scoped_defer.h>
