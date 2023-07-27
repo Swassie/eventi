@@ -1,0 +1,36 @@
+name: Run tests
+
+on: [push, workflow_dispatch]
+
+env:
+  CMAKE_BUILD_TYPE: Release
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  Test-linux:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/vcpkg/archives
+          key: vcpkg-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: vcpkg-${{ runner.os }}
+
+      - name: Configure
+        run: CXX=g++-10 cmake --preset=gcc -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTS=ON .
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Test
+        run: ./build/tests/unit-test

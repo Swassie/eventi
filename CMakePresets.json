@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "configurePresets": [
+    {
+      "name": "gcc",
+      "displayName": "GCC",
+      "description": "Default build options for GCC",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "-Wall -Wextra -pedantic -Werror"
+      }
+    }
+  ]
+}

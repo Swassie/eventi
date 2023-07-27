@@ -1,0 +1,14 @@
+{
+  "name": "unit-test",
+  "dependencies": [
+    "catch2"
+  ],
+  "builtin-baseline": "f4b262b259145adb2ab0116a390b08642489d32b",
+  "overrides": [
+    {
+      "name": "catch2",
+      "version": "2.13.9",
+      "port-version": 1
+    }
+  ]
+}
